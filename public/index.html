@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="msapplication-tap-highlight" content="no" />
+  <title>nginx demo</title>
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+  <div id="root">
+    <h1>Hello World</h1>
+    <button onclick="getFoo()">GET</button>
+    <button onclick="postBar()">POST</button>
+    <p>Ipsum ipsam quasi possimus explicabo maiores molestiae commodi maiores, quas voluptatibus, sapiente fuga. Officia error ipsum debitis quam perferendis laboriosam? Ad molestias debitis explicabo aliquid architecto aliquid nemo. Impedit fugit?</p>
+  </div>
+
+  <script>
+    function getFoo() {
+      fetch("/rest/foo")
+        .then(res => res.json())
+        .then(json => alert(JSON.stringify(json)))
+    }
+
+    function postBar() {
+      fetch("/rest/bar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({bar: 9999})
+      })
+        .then(res => res.json())
+        .then(json => alert(JSON.stringify(json)))
+    }
+  </script>
+</body>
+</html>
+
